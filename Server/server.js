@@ -3,7 +3,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
-
+const cors = require('cors');
 
 const app = express();
 mongoose.connect(config.database, (err)=>{
@@ -20,6 +20,7 @@ mongoose.connect(config.database, (err)=>{
 app.use(bodyParser.json);
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(morgan('dev'));
+app.use(cors());
 
 app.listen(config.port,err=>{
     console.log('Server listening on '+ config.port);

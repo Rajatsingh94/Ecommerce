@@ -9,12 +9,17 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {NgbModule, NgbDropdown, NgbDropdownConfig, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
+
 import {RestApiService} from './rest-api.service';
+import { MessageComponent } from './message/message.component';
+import {DataService} from './data.service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    MessageComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,7 @@ import {RestApiService} from './rest-api.service';
     HttpClientModule,
     FormsModule
   ],
-  providers: [NgbDropdownConfig,NgbCarouselConfig,RestApiService],
+  providers: [NgbDropdownConfig,NgbCarouselConfig,RestApiService,DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-3import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 
 import { RestApiService } from './rest-api.service';
 

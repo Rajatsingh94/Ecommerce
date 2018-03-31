@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModule, NgbDropdown, NgbDropdownConfig, NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './home/home.component';
-
+import {RestApiService} from './rest-api.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [NgbDropdownConfig,NgbCarouselConfig,RestApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

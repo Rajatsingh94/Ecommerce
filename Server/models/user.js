@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 const crypto = require('crypto');
 
 const UserSchema = new Schema({
@@ -7,7 +7,7 @@ const UserSchema = new Schema({
     email: {type: String, unique: true, lowercase: true},
     password: String,
     picture: String,
-    isSeller: {type: boolean, default: false},
+    isSeller: {type: Boolean, default: false},
     address:{
         addr1: String,
         addr2: String,
@@ -59,3 +59,5 @@ UserSchema.methods.gravatar = function(size)
         return 'https://gravatar.com/avatar/'+ md5 + '?s'+ size + '&d=retro';
     }
 };
+
+module.exports = mongoose.model('Users',UserSchema);

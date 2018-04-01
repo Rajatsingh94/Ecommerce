@@ -4,8 +4,12 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config');
 const cors = require('cors');
-
 const app = express();
+
+
+
+//mongoose connection
+
 mongoose.connect(config.database, (err)=>{
     if(err)
     {
@@ -16,11 +20,19 @@ mongoose.connect(config.database, (err)=>{
     }
 })
 
+//middleware
 
 app.use(bodyParser.json);
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(morgan('dev'));
 app.use(cors());
+
+//routes
+const userRoutes = require('./routes/account');
+app.use('/api/accounts',userRoutes);
+
+
+//server creation
 
 app.listen(config.port,err=>{
     console.log('Server listening on '+ config.port);

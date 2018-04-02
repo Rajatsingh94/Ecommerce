@@ -12,7 +12,7 @@ export class AppComponent {
   isCollapsed= true;
 
   constructor(private data:DataService,private router:Router){
-
+    this.data.getProfile();
   }
 
   get token(){

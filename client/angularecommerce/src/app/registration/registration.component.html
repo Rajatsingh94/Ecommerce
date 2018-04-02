@@ -1,6 +1,7 @@
 <section id="registrationPage">
   <div class="container p-5">
     <div class="row mt-5">
+      <div class="col-lg-4 offset-lg-4">
       <app-message></app-message>
       <div class="card bg-light">
         <div class="card-body">
@@ -24,13 +25,14 @@
               <input type="password" name="password" class="form-control" [(ngModel)]="password1">
             </div>
             <div class="form-check">
-              <label class="form-control-label">
-              <input type="checkbox" name="isSeller" class="form-control" [(ngModel)]="isSeller">Register a Seller
+              <label class="form-check-label">
+              <input type="checkbox" name="isSeller" class="form-check-input" [(ngModel)]="isSeller">Register a Seller
             </label>
             </div>
           </form>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>

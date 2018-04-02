@@ -42,4 +42,55 @@ router.post('/signup',(req,res,next)=>{
 
 });
 
+router.post('/login',(req,res,next)=>{
+
+    User.findOne({email: req.body.email},(err,user)=>{
+
+        if(err) throw err;
+
+        if(!user)
+        {
+            res.json({
+                success:false,
+                message:'Authentication failed, Wronf password'
+            });
+        }else if(user)
+        {
+            var password = User.comparePassword(req.body.password);
+            if(!password)
+            {
+                res.json({
+                    success:false,
+                    message:'Password didnt match, type again'
+                });
+            }
+            else
+            {
+                var token = jwt.sign({
+                    user:user
+                },config.secret,{
+                    expiresIn: '7d'
+                });
+
+                res.json({
+                    success:true,
+                    message:'Enjoy ur token',
+                    token:token
+                });
+            }
+
+
+        }
+
+
+    })
+
+
+});
+
+
+
+
+
+
 module.exports = router;

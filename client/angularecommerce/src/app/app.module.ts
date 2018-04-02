@@ -15,7 +15,7 @@ import { MessageComponent } from './message/message.component';
 import {DataService} from './data.service';
 import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
-
+import {AuthguardService} from './authguard.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,7 @@ import { LoginComponent } from './login/login.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [NgbDropdownConfig,NgbCarouselConfig,RestApiService,DataService],
+  providers: [NgbDropdownConfig,NgbCarouselConfig,RestApiService,DataService,AuthguardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

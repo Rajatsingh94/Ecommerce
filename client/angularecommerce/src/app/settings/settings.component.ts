@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {DataService} from '../data.service';
 import {RestApiService} from '../rest-api.service';
-import { settings } from 'cluster';
+
 
 @Component({
   selector: 'app-settings',
@@ -33,7 +33,7 @@ export class SettingsComponent implements OnInit {
     }
   }
 
-  validate(Settings){
+  validate(settings){
     if(settings['name']){
       if(settings['email']){
         if(settings['newPwd']){

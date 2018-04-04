@@ -7,6 +7,7 @@ import { AuthguardService} from './authguard.service';
 import {ProfileComponent} from './profile/profile.component';
 import {SettingsComponent} from './settings/settings.component';
 import {AddressComponent} from './address/address.component';
+import {CategoriesComponent} from './categories/categories.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,11 @@ const routes: Routes = [
   {
     path:'profile/address',
     component: AddressComponent,
+    canActivate: [AuthguardService]
+  },
+  {
+    path:'categories',
+    component: CategoriesComponent,
     canActivate: [AuthguardService]
   }
 

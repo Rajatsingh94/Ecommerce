@@ -1,5 +1,3 @@
-import { decode } from 'punycode';
-
 const jwt = require('jsonwebtoken');
 const config = require('../config');
 

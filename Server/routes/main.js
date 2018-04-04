@@ -1,4 +1,4 @@
-const router = require('@anguler/router');
+const router = require('express').Router();
 const Category = require('../models/category');
 
 router.route('/categories')

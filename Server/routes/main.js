@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const Category = require('../models/category');
 const Product = require('../models/product');
+const async = require('async');
+
 router.route('/categories')
 .get((req, res, next)=>{
     Category.find({}, (err, Categories)=>{
@@ -23,21 +25,9 @@ router.route('/categories')
 });
 
 router.get('/categories/:id',(req, res, next)=>{
-    
-    Products.find({category: req.params.id})
-    .populate('category')
-    .exec((err, Products)=>{
-        Product.count({category:req.params.id}, (err, totalProducts)=>{
-            res.json({
-                success: true,
-                message: 'category',
-                categoryName: products[0].category.name,
-                totalProducts: totalProducts,
-                pages: Math.ceil(totalProducts / perPage)
-            });
-        });
-    }
-)
+  const perPage = 10;
+  const page = req.query.page
+})
 
 });
 

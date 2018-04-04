@@ -65,6 +65,37 @@ export class PostProductComponent implements OnInit {
 
   fileChange(event: any)
   {
-    
+    this.product.product_picture = event.target.files[0];
+  }
+
+  async Post(){
+    this.btnDisabled = true;
+    try{
+      if(this.validate(this.product)){
+        const form = new FormData();
+        for(const key in this.product)
+        {
+          if(this.product.hasOwnProperty(key)){
+            if(key === 'product_picture')
+            {
+              form.append('product_picture', this.product.product_picture, this.product.product_picture.name);
+            }else{
+              form.append(key, this.product[key]);
+            }
+
+          }
+        }
+        const data = await this.rest.post('http://localhost:3000/api/seller/products', form);
+
+        data['success']
+        ? this.data.success(data['message'])
+        : this.data.error(data['message']);
+      }
+    }catch(error)
+    {
+      this.data.error(error['message']);
+    }
+
+    this.btnDisabled = false;
   }
 }

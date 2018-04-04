@@ -9,7 +9,7 @@ import {SettingsComponent} from './settings/settings.component';
 import {AddressComponent} from './address/address.component';
 import {CategoriesComponent} from './categories/categories.component';
 import { PostProductComponent } from './post-product/post-product.component';
-
+import { MyProductsComponent } from './my-products/my-products.component';
 
 const routes: Routes = [
   {
@@ -54,6 +54,11 @@ const routes: Routes = [
   {
     path:'profile/postproducts',
     component: PostProductComponent,
+    canActivate: [AuthguardService]
+  },
+  {
+    path:'products',
+    component: MyProductsComponent,
     canActivate: [AuthguardService]
   }
 

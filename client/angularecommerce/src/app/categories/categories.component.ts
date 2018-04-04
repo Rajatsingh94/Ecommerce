@@ -8,7 +8,8 @@ import {RestApiService} from '../rest-api.service';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-
+  btnDisabled = false;
+  newCategory = '';
   categories: any;
   constructor(private data: DataService, private rest: RestApiService) { }
 
@@ -26,6 +27,19 @@ export class CategoriesComponent implements OnInit {
 
   }
 
-
+async addCategoty()
+{
+  this.btnDisabled = true;
+  try{
+    const data = await this.rest.post('http://localhost:3000/api/categories',{
+      categories: this.newCategory
+    });
+    data['success']
+    ? (this.data.success(data['message']))
+    : this.data.error(data['message']);
+  }catch(error){
+    this.data.error(error['message']);
+  }
+}
 
 }

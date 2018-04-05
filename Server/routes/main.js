@@ -27,9 +27,17 @@ router.route('/categories')
 router.get('/categories/:id',(req, res, next)=>{
   const perPage = 10;
   const page = req.query.page
-})
-
+  async.waterfall([
+    function(callback)
+    {
+        Product.count({category: req.params.id}, (err, count)=>{
+            var totalProducts = count;
+            callback(err, totalProducts);
+        });
+    }
+  ])
 });
+
 
 
 
